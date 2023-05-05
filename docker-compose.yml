@@ -1,0 +1,6 @@
+version: "3"
+
+services:
+    ubuntu:
+        build: .
+        image: registry.sparcs.org/ubuntu-sparcs:20.04
