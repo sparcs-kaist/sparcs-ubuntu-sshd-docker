@@ -7,9 +7,7 @@ services:
     hostname: ${USERNAME}-server
     volumes:
       - home:/root
-      - type: bind
-        source: ./users/${USERNAME}/cred
-        target: /cred
+      - ./users/${USERNAME}/cred:/cred
     networks:
       - proxy
 
