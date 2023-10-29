@@ -1,0 +1,6 @@
+#!/bin/bash
+
+passwd
+
+cp /etc/shadow /cred/shadow
+ln -sf /cred/shadow /etc/shadow

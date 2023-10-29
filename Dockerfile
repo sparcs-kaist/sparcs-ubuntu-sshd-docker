@@ -11,6 +11,13 @@ RUN mkdir /var/run/sshd
 
 RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 
+RUN mkdir /cred
+
+# Copy custom password change script
+WORKDIR /root
+COPY ./template/changepw .
+RUN chmod u+x changepw
+
 EXPOSE 22
 
-CMD ["sh", "-c", "test -n \"$PASSWORD\" && echo \"root:$PASSWORD\" | chpasswd && /usr/sbin/sshd -D"]
+CMD ["sh", "-c", "ln -sf /cred/shadow /etc/shadow && /usr/sbin/sshd -D"]

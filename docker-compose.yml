@@ -1,6 +1,23 @@
 version: "3"
 
 services:
-    ubuntu:
-        build: .
-        image: registry.sparcs.org/ubuntu-sparcs:20.04
+  sshd-server:
+    build: .
+    container_name: ${USERNAME}-server
+    hostname: ${USERNAME}-server
+    environment:
+      - INITIAL_PASSWORD=${INITIAL_PASSWORD?:err}
+    volumes:
+      - home:/root
+      - type: bind
+        source: ./users/${USERNAME}/cred
+        target: /cred
+    networks:
+      - proxy
+
+volumes:
+  home:
+
+networks:
+  proxy:
+    external: true
