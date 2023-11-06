@@ -10,7 +10,7 @@ Newbie project 등에 사용됩니다.
 make up
 ```
 
-컨테이너를 처음 생성한 다음에는 사용할 포트(`22`번 포트 포함)를 직접 포워딩해 주어야 합니다.
+컨테이너를 처음 생성한 다음에는 사용할 포트를 직접 포워딩해 주어야 합니다.
 `proxy` docker network에 연결된 `ssal` 서버의 [Node Proxy Manager](https://nginx.ssal.sparcs.org)에서 가능합니다.
 
 ### Terminate

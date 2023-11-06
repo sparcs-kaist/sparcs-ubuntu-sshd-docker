@@ -5,6 +5,8 @@ services:
     build: .
     container_name: ${USERNAME}-server
     hostname: ${USERNAME}-server
+    ports:
+      - "${SSH_PORT}:22"
     volumes:
       - home:/root
       - ./users/${USERNAME}/cred:/cred
