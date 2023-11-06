@@ -12,10 +12,26 @@ services:
       - ./users/${USERNAME}/cred:/cred
     networks:
       - proxy
+      - db-network
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    container_name: ${USERNAME}-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=tnfqkrtm
+    volumes:
+      - data:/var/lib/mysql
+    networks:
+      - db-network
 
 volumes:
   home:
+  data:
 
 networks:
   proxy:
+    external: true
+  db-network:
+    name: ${USERNAME}-network
     external: true
