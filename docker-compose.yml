@@ -12,7 +12,6 @@ services:
       - ./users/${USERNAME}/cred:/cred
     networks:
       - proxy
-      - db-network
     depends_on:
       - db
   db:
